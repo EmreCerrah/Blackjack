@@ -9,7 +9,7 @@ A simple blackjack game I did while studying Java.
 >https://github.com/EmreCerrah/Blackjack.git
 - **You must open Visual Studio Code or another IDE after cloning**
 *Projeyi cloneladıktan sonra Visual Studio Code yada başka bir ide programında açınız.*
-- **You should run project in main file.
+- **You should run project in src/main file.
 *Main dosyasında projeyi çalıştırabilirsiniz*
 # Contributing
 ---
