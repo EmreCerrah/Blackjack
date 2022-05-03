@@ -24,6 +24,7 @@ public class Card {
             this.name = "King of";
             this.value = 10;
         } else {
+            this.value = value;
             this.name = String.valueOf(value);
         }
 

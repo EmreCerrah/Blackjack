@@ -17,17 +17,16 @@ public class Main {
             if (money == 0)
                 break;
             // Preparation for game
-            int homeValue=0;
-            while (homeValue < 17) { // home hand must be over of 17 in the orginal game rule
+            int dealer=0;
+            while (dealer < 17) { // home hand must be over of 17 in the orginal game rule
                 int increase = Integer.parseInt(String.valueOf(deck.pop()));
-                homeValue += increase;
+                dealer += increase;
                 Collections.shuffle(deck);
             }
 
-            int player;
             Card playerFirstCard = deck.pop();
             Card playerSecondCard = deck.pop();
-            player = (playerFirstCard.getValue() + playerSecondCard.getValue());
+            int player = (playerFirstCard.getValue() + playerSecondCard.getValue());
             
             if (player > 21 && playerSecondCard.getValue() == 11) { // you can use to ice value 11 or 1
                 player -= 10;
@@ -66,7 +65,7 @@ public class Main {
                 } else
                     break;
             }
-            money = result(player, homeValue, money, bet);
+            money = result(player, dealer, money, bet);
 
             System.out.println("\n");
         }
@@ -97,25 +96,25 @@ public class Main {
 
     }
 
-    public static int result(int player, int home, int money, int bet) {
+    public static int result(int player, int dealer, int money, int bet) {
         if (player > 21) {
-            System.out.println("Kasann kartlarnın toplam " + home + " Kasa Kazandı.");
+            System.out.println("Player is lose. Dealer score : " + dealer + " Winner is the dealer.");
             return money;
-        } else if (home > 21) {
-            System.out.println("Kasa 21'i geçti. Oyuncu kazandı. Oyuncunun elinin toplam " + player);
+        } else if (dealer > 21) {
+            System.out.println("The dealer is lose. Player score : " + player+ "Winner is the player.");
             money += (bet * 2);
             return money;
-        } else if (player > home) {
+        } else if (player > dealer) {
             System.out.println(
-                    "Oyuncunun eli toplamda " + player + ", kasanın eli toplamda " + home + "\nOyuncu kazandı.");
+                    "Player score is " + player + ", dealer score is " + dealer + ".\nWinner is the player.");
             money += (bet * 2);
             return money;
-        } else if (player < home) {
+        } else if (player < dealer) {
             System.out
-                    .println("Oyuncunun eli toplamda " + player + ", kasanın eli toplamda " + home + "\nKasa kazandı.");
+                    .println("Player score is " + player + ", dealer score is " + dealer + ".\nWinner is the dealer.");
             return money;
-        } else if (player == home)
-            System.out.println("Oyuncunun eli toplamda " + player + ", kasanın eli toplamda " + home + "\nBeraberlik.");
+        } else if (player == dealer)
+            System.out.println("Player score is " + player + ", dealer score is " + dealer + ".\nDraw.");
         money += bet;
         return money;
     }
