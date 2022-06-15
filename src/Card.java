@@ -10,6 +10,7 @@ public class Card {
 
     public Card(int value, String suit, boolean jack) {
         // for Blackjack rules
+    if (jack) {
         this.suit = suit;
         if (value == 1) {
             this.name = "Ace";
@@ -27,7 +28,7 @@ public class Card {
             this.value = value;
             this.name = String.valueOf(value);
         }
-
+    }
     }
 
     public void Card(int value, String suit) {
@@ -50,7 +51,6 @@ public class Card {
 
     public String showCard() {
         return name + " " + suit;
-
     }
 
     @Override
